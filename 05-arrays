@@ -1,0 +1,271 @@
+EASY:
+1.Build Array from Permutation
+class Solution {
+    public int[] buildArray(int[] nums) {
+        int n = nums.length;
+        int[] ans = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            ans[i] = nums[nums[i]];
+        }
+
+        return ans;
+    }
+}
+input:nums = [0,2,1,5,3,4]
+output: [0,1,2,4,5,3]
+
+2.Concatenation of Array
+class Solution {
+    public int[] getConcatenation(int[] nums) {
+        int n = nums.length;
+        int[] ans = new int[2 * n];
+
+        for (int i = 0; i < n; i++) {
+            ans[i] = nums[i];
+            ans[i + n] = nums[i];
+        }
+
+        return ans;
+    }
+}
+input:nums = [1,2,1]
+output:[1,2,1,1,2,1]
+
+3.Running Sum of 1D Array
+class Solution {
+    public int[] runningSum(int[] nums) {
+
+        for (int i = 1; i < nums.length; i++) {
+            nums[i] = nums[i] + nums[i - 1];
+        }
+
+        return nums;
+    }
+}
+input:nums = [1,2,3,4]
+output:[1,3,6,10]
+
+MEDIUM:
+
+1.Spiral Matrix:
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+
+        List<Integer> ans = new ArrayList<>();
+
+        int top = 0;
+        int bottom = matrix.length - 1;
+        int left = 0;
+        int right = matrix[0].length - 1;
+
+        while (top <= bottom && left <= right) {
+
+            // Left -> Right
+            for (int i = left; i <= right; i++)
+                ans.add(matrix[top][i]);
+            top++;
+
+            // Top -> Bottom
+            for (int i = top; i <= bottom; i++)
+                ans.add(matrix[i][right]);
+            right--;
+
+            // Right -> Left
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--)
+                    ans.add(matrix[bottom][i]);
+                bottom--;
+            }
+
+            // Bottom -> Top
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--)
+                    ans.add(matrix[i][left]);
+                left++;
+            }
+        }
+
+        return ans;
+    }
+}
+
+2.Spiral Matrix II
+class Solution {
+
+    public int[][] generateMatrix(int n) {
+
+        int[][] matrix = new int[n][n];
+
+        int top = 0;
+        int bottom = n - 1;
+        int left = 0;
+        int right = n - 1;
+
+        int num = 1;
+
+        while (top <= bottom && left <= right) {
+
+            for (int i = left; i <= right; i++)
+                matrix[top][i] = num++;
+            top++;
+
+            for (int i = top; i <= bottom; i++)
+                matrix[i][right] = num++;
+            right--;
+
+            for (int i = right; i >= left; i--)
+                matrix[bottom][i] = num++;
+            bottom--;
+
+            for (int i = bottom; i >= top; i--)
+                matrix[i][left] = num++;
+            left++;
+        }
+
+        return matrix;
+    }
+}
+input:n = 3
+output:[
+ [1,2,3],
+ [8,9,4],
+ [7,6,5]
+]
+
+3.Spiral Matrix III
+class Solution {
+
+    public int[][] spiralMatrixIII(int rows, int cols, int rStart, int cStart) {
+
+        int[][] ans = new int[rows * cols][2];
+
+        int[][] dir = {
+                {0, 1},
+                {1, 0},
+                {0, -1},
+                {-1, 0}
+        };
+
+        int index = 0;
+        ans[index++] = new int[]{rStart, cStart};
+
+        int steps = 1;
+
+        while (index < rows * cols) {
+
+            for (int d = 0; d < 4; d++) {
+
+                for (int i = 0; i < steps; i++) {
+
+                    rStart += dir[d][0];
+                    cStart += dir[d][1];
+
+                    if (rStart >= 0 && rStart < rows &&
+                        cStart >= 0 && cStart < cols) {
+
+                        ans[index++] = new int[]{rStart, cStart};
+
+                        if (index == rows * cols)
+                            return ans;
+                    }
+                }
+
+                if (d == 1 || d == 3)
+                    steps++;
+            }
+        }
+
+        return ans;
+    }
+}
+
+INTERMEDIATE:
+1.Max Value of Equation
+class Solution {
+
+    public int findMaxValueOfEquation(int[][] points, int k) {
+
+        Deque<int[]> deque = new ArrayDeque<>();
+        int ans = Integer.MIN_VALUE;
+
+        for (int[] p : points) {
+
+            int x = p[0];
+            int y = p[1];
+
+            while (!deque.isEmpty() && x - deque.peekFirst()[0] > k)
+                deque.pollFirst();
+
+            if (!deque.isEmpty())
+                ans = Math.max(ans, x + y + deque.peekFirst()[1]);
+
+            while (!deque.isEmpty() && deque.peekLast()[1] <= y - x)
+                deque.pollLast();
+
+            deque.offerLast(new int[]{x, y - x});
+        }
+
+        return ans;
+    }
+}
+INPUT:points = [[1,3],[2,0],[5,10],[6,-10]]
+k = 1
+OUTPUT:4
+
+2.First Missing Positive
+class Solution {
+
+    public int firstMissingPositive(int[] nums) {
+
+        int n = nums.length;
+
+        for (int i = 0; i < n; i++) {
+
+            while (nums[i] > 0 &&
+                   nums[i] <= n &&
+                   nums[nums[i] - 1] != nums[i]) {
+
+                int temp = nums[i];
+                nums[i] = nums[temp - 1];
+                nums[temp - 1] = temp;
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != i + 1)
+                return i + 1;
+        }
+
+        return n + 1;
+    }
+}
+INPUT:nums = [1,2,0]
+OUTPUT:3
+
+3.Check If It Is a Good Array
+class Solution {
+
+    public boolean isGoodArray(int[] nums) {
+
+        int gcd = nums[0];
+
+        for (int num : nums)
+            gcd = gcd(gcd, num);
+
+        return gcd == 1;
+    }
+
+    private int gcd(int a, int b) {
+
+        while (b != 0) {
+            int temp = a % b;
+            a = b;
+            b = temp;
+        }
+
+        return a;
+    }
+}
+INPUT:nums = [12,5,7,23]
+OUTPUT:true
