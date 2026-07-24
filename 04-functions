@@ -1,0 +1,164 @@
+1.Define two methods to print the maximum and the minimum number respectively among three numbers entered by the user.
+import java.util.Scanner;
+
+public class MaxMin {
+    static void findMax(int a, int b, int c) {
+        int max = Math.max(a, Math.max(b, c));
+        System.out.println("Maximum = " + max);
+    }
+
+    static void findMin(int a, int b, int c) {
+        int min = Math.min(a, Math.min(b, c));
+        System.out.println("Minimum = " + min);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter three numbers: ");
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+
+        findMax(a, b, c);
+        findMin(a, b, c);
+
+        sc.close();
+    }
+}
+output:Enter three numbers: 15 8 20
+Maximum = 20
+Minimum = 8
+
+2.Define a program to find out whether a given number is even or odd.
+import java.util.Scanner;
+
+public class EvenOddMethod {
+
+    static void checkEvenOdd(int num) {
+        if (num % 2 == 0)
+            System.out.println("Even Number");
+        else
+            System.out.println("Odd Number");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+
+        checkEvenOdd(num);
+
+        sc.close();
+    }
+}
+output:Enter a number: 19
+Odd Number
+
+3.A person is eligible to vote if his/her age is greater than or equal to 18. Define a method to find out if he/she is eligible to vote.
+import java.util.Scanner;
+
+public class VotingEligibility {
+
+    static void checkVote(int age) {
+        if (age >= 18)
+            System.out.println("Eligible to Vote");
+        else
+            System.out.println("Not Eligible to Vote");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter your age: ");
+        int age = sc.nextInt();
+
+        checkVote(age);
+
+        sc.close();
+    }
+}
+output:Enter your age: 20
+Eligible to Vote
+
+4.Write a program to print the sum of two numbers entered by user by defining your own method.
+import java.util.Scanner;
+
+public class SumMethod {
+
+    static void sum(int a, int b) {
+        System.out.println("Sum = " + (a + b));
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter two numbers: ");
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        sum(a, b);
+
+        sc.close();
+    }
+}
+output:
+Enter two numbers: 15 25
+Sum = 40
+
+5.Define a method that returns the product of two numbers entered by user.
+import java.util.Scanner;
+
+public class ProductMethod {
+
+    static int product(int a, int b) {
+        return a * b;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter two numbers: ");
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        int result = product(a, b);
+
+        System.out.println("Product = " + result);
+
+        sc.close();
+    }
+}
+output:
+Enter two numbers: 8 7
+Product = 56
+
+6.Write a program to print the circumference and area of a circle of radius entered by user by defining your own method.
+import java.util.Scanner;
+
+public class CircleMethods {
+
+    static double area(double radius) {
+        return Math.PI * radius * radius;
+    }
+
+    static double circumference(double radius) {
+        return 2 * Math.PI * radius;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter radius: ");
+        double radius = sc.nextDouble();
+
+        System.out.println("Area = " + area(radius));
+        System.out.println("Circumference = " + circumference(radius));
+
+        sc.close();
+    }
+}
+output:Enter radius: 7
+Area = 153.93804002589985
+Circumference = 43.982297150257104
