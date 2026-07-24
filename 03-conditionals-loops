@@ -1,0 +1,249 @@
+Basic Java programs 
+1.Area of Circle 
+import java.util.Scanner;
+
+public class AreaOfCircle {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter radius: ");
+        double radius = sc.nextDouble();
+
+        double area = Math.PI * radius * radius;
+
+        System.out.println("Area of Circle = " + area);
+
+        sc.close();
+    }
+}
+output :Enter radius: 7
+Area of Circle = 153.93804002589985
+
+2.Area of Triangle 
+import java.util.Scanner;
+
+public class AreaOfTriangle {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter base: ");
+        double base = sc.nextDouble();
+
+        System.out.print("Enter height: ");
+        double height = sc.nextDouble();
+
+        double area = 0.5 * base * height;
+
+        System.out.println("Area of Triangle = " + area);
+
+        sc.close();
+    }
+}
+output:Enter base: 10
+Enter height: 8
+Area of Triangle = 40.0
+
+3.Area of Rectangle 
+import java.util.Scanner;
+
+public class AreaOfRectangle {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter length: ");
+        double length = sc.nextDouble();
+
+        System.out.print("Enter breadth: ");
+        double breadth = sc.nextDouble();
+
+        double area = length * breadth;
+
+        System.out.println("Area of Rectangle = " + area);
+
+        sc.close();
+    }
+}
+Enter length: 12
+Enter breadth: 6
+Area of Rectangle = 72.0
+
+4.Area of Isosceles Traingle 
+import java.util.Scanner;
+
+public class AreaOfIsoscelesTriangle {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter base: ");
+        double base = sc.nextDouble();
+
+        System.out.print("Enter height: ");
+        double height = sc.nextDouble();
+
+        double area = (base * height) / 2;
+
+        System.out.println("Area of Isosceles Triangle = " + area);
+
+        sc.close();
+    }
+}
+Enter base: 10
+Enter height: 6
+Area of Isosceles Triangle = 30.0
+
+5.Area of Parallelogram
+import java.util.Scanner;
+
+public class AreaOfParallelogram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter base: ");
+        double base = sc.nextDouble();
+
+        System.out.print("Enter height: ");
+        double height = sc.nextDouble();
+
+        double area = base * height;
+
+        System.out.println("Area of Parallelogram = " + area);
+
+        sc.close();
+    }
+}
+Enter base: 15
+Enter height: 8
+Area of Parallelogram = 120.0
+
+Intermediate of Java :
+1. Calculate Commission Percentage
+import java.util.Scanner;
+
+public class CommissionPercentage {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Sales Amount: ");
+        double sales = sc.nextDouble();
+
+        System.out.print("Enter Commission Amount: ");
+        double commission = sc.nextDouble();
+
+        double percentage = (commission / sales) * 100;
+
+        System.out.println("Commission Percentage = " + percentage + "%");
+
+        sc.close();
+    }
+}
+Enter Sales Amount: 50000
+Enter Commission Amount: 5000
+Commission Percentage = 10.0%
+
+2.Power in Java 
+import java.util.Scanner;
+
+public class PowerProgram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Base: ");
+        double base = sc.nextDouble();
+
+        System.out.print("Enter Exponent: ");
+        double exponent = sc.nextDouble();
+
+        double result = Math.pow(base, exponent);
+
+        System.out.println("Result = " + result);
+
+        sc.close();
+    }
+}
+output:
+Enter Base: 5
+Enter Exponent: 3
+Result = 125.0
+
+3. Calculate Depreciation of Value
+import java.util.Scanner;
+
+public class Depreciation {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Original Value: ");
+        double originalValue = sc.nextDouble();
+
+        System.out.print("Enter Current Value: ");
+        double currentValue = sc.nextDouble();
+
+        double depreciation = originalValue - currentValue;
+
+        System.out.println("Depreciation = " + depreciation);
+
+        sc.close();
+    }
+}
+output:
+Enter Original Value: 100000
+Enter Current Value: 75000
+Depreciation = 25000.0
+
+4. Calculate Batting Average
+import java.util.Scanner;
+
+public class BattingAverage {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Total Runs: ");
+        int runs = sc.nextInt();
+
+        System.out.print("Enter Number of Times Out: ");
+        int outs = sc.nextInt();
+
+        double average = (double) runs / outs;
+
+        System.out.println("Batting Average = " + average);
+
+        sc.close();
+    }
+}
+output:
+Enter Total Runs: 850
+Enter Number of Times Out: 20
+Batting Average = 42.5
+
+5. Calculate CGPA Java Program
+import java.util.Scanner;
+
+public class CGPACalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Number of Subjects: ");
+        int n = sc.nextInt();
+
+        double total = 0;
+
+        for (int i = 1; i <= n; i++) {
+            System.out.print("Enter Grade Point for Subject " + i + ": ");
+            total += sc.nextDouble();
+        }
+
+        double cgpa = total / n;
+
+        System.out.println("CGPA = " + cgpa);
+
+        sc.close();
+    }
+}
+output:
+Enter Number of Subjects: 5
+Enter Grade Point for Subject 1: 8.5
+Enter Grade Point for Subject 2: 8.0
+Enter Grade Point for Subject 3: 9.2
+Enter Grade Point for Subject 4: 8.8
+Enter Grade Point for Subject 5: 9.0
+CGPA = 8.7
