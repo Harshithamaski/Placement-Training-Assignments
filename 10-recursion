@@ -1,0 +1,88 @@
+1. Sum Triangle from Array :
+import java.util.Arrays;
+
+public class Main {
+
+    public static void printSumTriangle(int[] arr) {
+
+        if (arr.length < 1) {
+            return;
+        }
+
+        int[] temp = new int[arr.length - 1];
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            temp[i] = arr[i] + arr[i + 1];
+        }
+
+        printSumTriangle(temp);
+
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void main(String[] args) {
+
+        int[] A = {1, 2, 3, 4, 5};
+
+        printSumTriangle(A);
+    }
+}
+OUTPUT:[48]
+[20, 28]
+[8, 12, 16]
+[3, 5, 7, 9]
+[1, 2, 3, 4, 5]
+
+2.Combination Sum (Backtracking Recursion)
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
+
+        List<List<Integer>> result = new ArrayList<>();
+
+        backtrack(result, new ArrayList<>(), candidates, target, 0);
+
+        return result;
+    }
+
+    private static void backtrack(List<List<Integer>> result,
+                                  List<Integer> current,
+                                  int[] candidates,
+                                  int target,
+                                  int start) {
+
+        if (target < 0)
+            return;
+
+        if (target == 0) {
+            result.add(new ArrayList<>(current));
+            return;
+        }
+
+        for (int i = start; i < candidates.length; i++) {
+
+            current.add(candidates[i]);
+
+            // Recursive call
+            backtrack(result, current, candidates, target - candidates[i], i);
+
+            current.remove(current.size() - 1);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        int[] candidates = {2, 3, 6, 7};
+
+        int target = 7;
+
+        List<List<Integer>> ans = combinationSum(candidates, target);
+
+        System.out.println(ans);
+    }
+}
+OUTPUT:
+[[2, 2, 3], [7]]
